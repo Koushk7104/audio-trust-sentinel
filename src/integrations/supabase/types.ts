@@ -24,6 +24,42 @@ export type Database = {
         }
         Relationships: []
       }
+      audio_analysis: {
+        Row: {
+          background_noise_score: number | null
+          confidence_score: number | null
+          created_at: string
+          file_path: string
+          frequency_score: number | null
+          id: number
+          is_analyzed: boolean | null
+          speech_rhythm_score: number | null
+          voice_pattern_score: number | null
+        }
+        Insert: {
+          background_noise_score?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          file_path: string
+          frequency_score?: number | null
+          id?: never
+          is_analyzed?: boolean | null
+          speech_rhythm_score?: number | null
+          voice_pattern_score?: number | null
+        }
+        Update: {
+          background_noise_score?: number | null
+          confidence_score?: number | null
+          created_at?: string
+          file_path?: string
+          frequency_score?: number | null
+          id?: never
+          is_analyzed?: boolean | null
+          speech_rhythm_score?: number | null
+          voice_pattern_score?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
