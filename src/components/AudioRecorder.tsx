@@ -4,7 +4,17 @@ import { Mic, Square, Upload, Play } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const AudioRecorder = () => {
+interface AudioRecorderProps {
+  onAnalysisComplete: (results: {
+    confidenceScore: number;
+    analysisDetails: Array<{
+      title: string;
+      score: number;
+    }>;
+  }) => void;
+}
+
+const AudioRecorder = ({ onAnalysisComplete }: AudioRecorderProps) => {
   const [isRecording, setIsRecording] = useState(false);
   const [audioURL, setAudioURL] = useState<string | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);

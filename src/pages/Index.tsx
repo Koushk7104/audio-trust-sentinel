@@ -3,10 +3,18 @@ import AudioRecorder from '@/components/AudioRecorder';
 import AnalysisResult from '@/components/AnalysisResult';
 import EducationalSection from '@/components/EducationalSection';
 
-const Index = () => {
-  const [analysisResults, setAnalysisResults] = useState(null);
+interface AnalysisResults {
+  confidenceScore: number;
+  analysisDetails: Array<{
+    title: string;
+    score: number;
+  }>;
+}
 
-  const handleAnalysisComplete = (results) => {
+const Index = () => {
+  const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null);
+
+  const handleAnalysisComplete = (results: AnalysisResults) => {
     setAnalysisResults(results);
   };
 
