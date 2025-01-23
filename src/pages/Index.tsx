@@ -4,16 +4,10 @@ import AnalysisResult from '@/components/AnalysisResult';
 import EducationalSection from '@/components/EducationalSection';
 
 const Index = () => {
-  const [showResults] = useState(true);
+  const [analysisResults, setAnalysisResults] = useState(null);
 
-  const mockAnalysisData = {
-    confidenceScore: 85,
-    analysisDetails: [
-      { title: "Voice Pattern Consistency", score: 90 },
-      { title: "Background Noise Analysis", score: 85 },
-      { title: "Speech Rhythm", score: 82 },
-      { title: "Frequency Distribution", score: 88 },
-    ],
+  const handleAnalysisComplete = (results) => {
+    setAnalysisResults(results);
   };
 
   return (
@@ -27,12 +21,12 @@ const Index = () => {
         </div>
 
         <div className="flex flex-col items-center space-y-8">
-          <AudioRecorder />
+          <AudioRecorder onAnalysisComplete={handleAnalysisComplete} />
           
-          {showResults && (
+          {analysisResults && (
             <AnalysisResult 
-              confidenceScore={mockAnalysisData.confidenceScore}
-              analysisDetails={mockAnalysisData.analysisDetails}
+              confidenceScore={analysisResults.confidenceScore}
+              analysisDetails={analysisResults.analysisDetails}
             />
           )}
         </div>
